@@ -1,0 +1,14 @@
+__MACOSX/
+env/
+
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+**/*.ipynb_checkpoints
+
+.vscode
+*/.vscode/*
+**/*.vscode
+
+__pycache__
+*/__pycache__/*
+**/*__pycache__
