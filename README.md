@@ -2,6 +2,10 @@
 
 **A system for matching text with emotionally resonant music**
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/yeununchoo/AmbianceNet/main)
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/yeununchoo/AmbianceNet)
+
 Team B612: Yeunun Choo, Theodora Kunicki, Jin Hyeok Noh
 
 [CS 2470](https://brown-deep-learning.github.io/dl-website-2022/index.html), Group Project
