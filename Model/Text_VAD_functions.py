@@ -127,7 +127,6 @@ def test(model, text_input, VAD_true, sample_weights):
 
     return tf.reduce_mean(np.array(batch_loss_list))
 
-
 def accuracy(model, text_input, sample_weights, onehot_emotion_labels, emotion_vad_mapping_pd):
     """
     Runs through one epoch - all training examples.
@@ -168,10 +167,10 @@ def accuracy(model, text_input, sample_weights, onehot_emotion_labels, emotion_v
         data = np.zeros((7, 3), dtype = int))
     
     accuracy = 0
-    for i, text in enumerate(text_input):
-        VAD_pred = model(np.array([text]))
-            
-        repeated_VAD_pred = np.repeat(VAD_pred, repeats = 28).reshape(3, 28).T
+    VAD_pred = model(text_input)
+    
+    for i, each_VAD_pred in enumerate(VAD_pred):
+        repeated_VAD_pred = np.repeat(each_VAD_pred, repeats = 28).reshape(3, 28).T
         euc_dists = np.sum(np.square(emo_vecs - repeated_VAD_pred), 
                            axis = 1)
             
@@ -195,7 +194,7 @@ def accuracy(model, text_input, sample_weights, onehot_emotion_labels, emotion_v
             accuracy_pd.loc[closest_ekman, "fp"] += 1
             
         for each_label_ekman in label_ekman_set:
-            if closest_ekman != label_ekman_set:
+            if closest_ekman != each_label_ekman:
                 accuracy_pd.loc[each_label_ekman, "fn"] += 1
             
 

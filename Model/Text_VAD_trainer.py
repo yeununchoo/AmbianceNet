@@ -26,6 +26,8 @@ save_figures = True
 data_path = "../Data"
 weights_path = "Weights"
 figure_path = "../Figures"
+eval_path = "Evaluations"
+
 
 # ensures that we run only on cpu
 # this environment variable is not permanent
@@ -252,4 +254,5 @@ print(model.summary())
 #########################################################
 
 model.save_weights(f"{weights_path}/Text_Weights")
+test_accuracy_pd.to_parquet(f"{eval_path}/Text_pd.parquet")
 

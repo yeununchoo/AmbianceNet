@@ -25,6 +25,8 @@ save_figures = True
 data_path = "../Data"
 weights_path = "Weights"
 figure_path = "../Figures"
+eval_path = "Evaluations"
+
 
 # ensures that we run only on cpu
 # this environment variable is not permanent
@@ -291,12 +293,13 @@ def find_closest_music(each_text_vad, music_VAD_predictions):
 
 def mapping_accuracy(text_VAD_predictions, music_VAD_predictions, 
                      text_label_five_list, music_label_eval):
-    
     accuracy_list = []
     accuracy_pd = pd.DataFrame(
         columns = ["tp", "fp", "fn"], 
         index = ['Happy', 'Funny', 'Sad', 'Tender', 'Angry'],
         data = np.zeros((5, 3), dtype = int))
+
+    five_emotion_list = ['Happy', 'Funny', 'Sad', 'Tender', 'Angry']
 
     for each_text_index, each_text_vad in enumerate(text_VAD_predictions):
         each_music_index = find_closest_music(each_text_vad, music_VAD_predictions)
@@ -310,17 +313,17 @@ def mapping_accuracy(text_VAD_predictions, music_VAD_predictions,
         is_correct = each_music_emotion_pred in each_text_emotion_label_list
 
         accuracy_list.append(is_correct)
-        
+
         if each_music_emotion_pred in each_text_emotion_label_list:
             accuracy_pd.loc[each_music_emotion_pred, "tp"] += 1
         else:
             accuracy_pd.loc[each_music_emotion_pred, "fp"] += 1
-            
-        for each_text_label in each_text_emotion_label_list:
-            if each_music_emotion_pred != each_text_emotion_label_list:
-                accuracy_pd.loc[each_music_emotion_pred, "fn"] += 1
 
-    
+        for each_major_emotion in each_text_emotion_label_list:
+            if each_music_emotion_pred != each_major_emotion:
+                accuracy_pd.loc[each_major_emotion, "fn"] += 1
+
+
     micro_accuracy = np.mean(np.array(accuracy_list))
     return micro_accuracy, accuracy_pd
     
@@ -347,5 +350,5 @@ macro_precision = accuracy_pd["precision"].mean()
 print(f"macro_precision: {100*macro_precision:2.2f}%")
 
 print(accuracy_pd)
-
+accuracy_pd.to_parquet(f"{eval_path}/Connection_pd.parquet")
 

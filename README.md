@@ -20,9 +20,9 @@ The purpose of this project is to build a system to match text with emotionally 
 
 ## Data
 
-The text data is the [GoEmotions](https://ai.googleblog.com/2021/10/goemotions-dataset-for-fine-grained.html) dataset Google, distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+The text data is the [GoEmotions](https://ai.googleblog.com/2021/10/goemotions-dataset-for-fine-grained.html) dataset created by Google, distributed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
-The music data is [Google AudioSet](https://research.google.com/audioset/) dataset, distributed under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/).
+The music data is the [Google AudioSet](https://research.google.com/audioset/) dataset, distributed under the [CC BY 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
 We have also used the [NRC Valence, Arousal, and Dominance (NRC-VAD) Lexicon](https://saifmohammad.com/WebPages/nrc-vad.html).
 

@@ -1,2 +1,2 @@
-model_checkpoint_path: "Music_Weights"
-all_model_checkpoint_paths: "Music_Weights"
+model_checkpoint_path: "Text_Weights"
+all_model_checkpoint_paths: "Text_Weights"
